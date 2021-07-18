@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"><title>あなたの自己紹介ページ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script  type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+
+    <style>
+      html {
+        min-height: 100%;
+      }
+      body {
+  background: -moz-linear-gradient(top, #7fffd4, #FFF);
+  background: -webkit-linear-gradient(top, #7fffd4, #FFF);
+  background: linear-gradient(to bottom, #7fffd4, #FFF);
+}
+    </style>
+  </head>
+  <body>
+    <script>
+      let check = false; // 「途中でキャンセルが押された場合，何も入力せずにOKが押された場合」のための変数
+
+      alert("(✿✪‿✪｡)ﾉｺﾝﾁｬ♡")
+      alert("あなたの自己紹介ページを作るよ")
+      let name;
+      let toshi;
+      let from;
+      let syumi;
+      let hitokoto;
+      let ok;
+      function test(){
+        name = prompt('お名前は？');
+        if ((name == "") || (name == null)){ // キャンセルが押された場合，何も入力せずにOKが押された場合
+          return; //test関数を終了する
+        }
+        toshi = prompt('何歳？');
+        if ((toshi == "") || (toshi == null)){ // キャンセルが押された場合，何も入力せずにOKが押された場合
+          return; //test関数を終了する
+        }
+        from = prompt('出身は？');
+        if ((from == "") || (from == null)){ // キャンセルが押された場合，何も入力せずにOKが押された場合
+          return; //test関数を終了する
+        }
+        syumi = prompt('趣味は？');
+        if ((syumi == "") || (syumi == null)){ // キャンセルが押された場合，何も入力せずにOKが押された場合
+          return; //test関数を終了する
+        }
+        hitokoto = prompt('一言！');
+        if ((hitokoto == "") || (hitokoto == null)){ // キャンセルが押された場合，何も入力せずにOKが押された場合
+          return; //test関数を終了する
+        }
+        ok = confirm('本当に' + '　名前' + name + toshi + '歳　'　+ from + '出身' + '　趣味' +syumi + '　一言　' + hitokoto + '　でいい？');
+        if ((ok == "") || (ok == null)){ // キャンセルが押された場合，何も入力せずにOKが押された場合
+          return; //test関数を終了する
+        }
+        check = true; // 最後まで実行された場合，trueに変更
+      }
+      while (check==false){ //test関数が途中で終了する限り，繰り返す
+        test();
+      }
+
+      alert("ありがとうございました。またのご利用お待ちしております！")
+      alert("okを押したら表示画面にいけます")
+
+        document.write('<div><h1>♥名前♥</h1><h3>' + name + '</h3></div>');
+        document.write('<div><h1>★年齢★</h1><h3>' + toshi + '</h3></div>');
+        document.write('<div><h1>☘出身☘</h1><h3>' + from + '</h3></div>');
+        document.write('<div><h1>♦趣味♦</h1><h3>' + syumi + '</h3></div>');
+        document.write('<div><h1>♪一言♪</h1><h3>' + hitokoto + '</h3></div>');
+  </script>
+  <div id=text style="text-align: center;"></div>
+  <button onclick="onClickCopy()">コピー</button>
+  <script language="javascript" type="text/javascript">
+    $(window).on('load', function () {
+        document.addEventListener('copy', function(e) {
+            // コピー内容を取得する.
+            let copyTarget = $('div').text();
+            console.log("コピーされました")
+            // クリップボートにコピー内容を設定する.
+            e.clipboardData.setData('text/plain' , copyTarget);
+            // もともとのコピーイベントを中止する.
+            e.preventDefault();
+        });
+    });
+
+    function onClickCopy() {
+        if(window.clipboardData){
+            // IEの場合の処理.
+            let copyTarget = $('#copyTarget').text();
+            window.clipboardData.setData('Text' , copyTarget);
+        } else {
+            // IE以外の場合の処理.
+            // コピーイベントを発生させる.
+            document.execCommand('copy');
+        }
+    }
+</script>
+</body>
+</html>
